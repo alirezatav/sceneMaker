@@ -4,6 +4,7 @@ const { parse, stringify, resync } = require("subtitle");
 const config = require("./../../config");
 const { trimMedia } = require("./../utils");
 const {
+  MOVIES_DIRECTORY,
   SCENE_LEFT_MARGIN,
   SCENE_RIGHT_MARGIN,
   VIDEO_LEFT_MARGIN,
@@ -14,8 +15,8 @@ function SceneMaker(id, video_path, subtitle_path, w) {
   var scenes = [];
   const word = w;
   const videoID = id;
-  const videoPath = video_path;
-  const subtitlePath = subtitle_path;
+  const videoPath = `${MOVIES_DIRECTORY}/${video_path}`;
+  const subtitlePath = `${MOVIES_DIRECTORY}/${subtitle_path}`;
   const outScenesPath = makeSceneDirectory(subtitlePath);
   const subtitle = fs.readFileSync(subtitlePath, "utf8");
   const subtitlesMain = [...parse(subtitle)];

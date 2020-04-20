@@ -32,11 +32,11 @@ router.post("/", async (req, res) => {
         return;
       }
 
-      let vPath = `${moviesDirectory}/${req.body.name}/${video.name}`;
-      let sPath = `${moviesDirectory}/${req.body.name}/${subtitle.name}`;
+      let vPath = `${req.body.name}/${video.name}`;
+      let sPath = `${req.body.name}/${subtitle.name}`;
       let category = req.body.category || "movie";
-      video.mv(vPath);
-      subtitle.mv(sPath);
+      video.mv(`${moviesDirectory}/${vPath}`);
+      subtitle.mv(`${moviesDirectory}/${sPath}`);
 
       let d = await insertVideo(
         req.body.name,
