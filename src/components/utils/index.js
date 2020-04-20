@@ -16,7 +16,7 @@ function trimMedia(input, output, start, duration) {
         if (!err) {
           video
             .setVideoStartTime(start / 1000)
-            .video.setVideoDuration(duration / 1000)
+            .setVideoDuration(duration / 1000)
             .save(output, function (error, file) {
               if (!error) console.log("Video file: " + file);
             });
