@@ -1,13 +1,19 @@
+//Export video config
 const config = {
-  VIDEO_LEFT_MARGIN: 0,
-  VIDEO_RIGHT_MARGIN: 700,
   SCENE_LEFT_MARGIN: 5000,
   SCENE_RIGHT_MARGIN: 5000,
+  VIDEO_LEFT_MARGIN: 0,
+  VIDEO_RIGHT_MARGIN: 700,
+  VIDEOS_DIRECTORY: "resources/videos",
+};
+
+//postgres database
+const postgres = {
   DATABASE_NAME: "weblatedb",
   DATABASE_HOST: "185.120.221.230",
   DATABASE_USERNAME: "weblate",
   DATABASE_PASSWORD: "weblate",
   DATABASE_PORT: 5433,
-  MOVIES_DIRECTORY:'resources/Movies'
 };
-module.exports = config;
+
+module.exports = { ...config, ...postgres };

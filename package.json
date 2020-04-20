@@ -17,8 +17,6 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.3",
     "express-jwt": "^5.3.3",
-    "ffmpeg": "0.0.4",
-    "fluent-ffmpeg": "^2.1.2",
     "lodash": "^4.17.15",
     "morgan": "^1.10.0",
     "pg": "^8.0.2",

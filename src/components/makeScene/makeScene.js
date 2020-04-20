@@ -4,7 +4,7 @@ const { parse, stringify, resync } = require("subtitle");
 const config = require("./../../config");
 const { trimMedia } = require("./../utils");
 const {
-  MOVIES_DIRECTORY,
+  VIDEOS_DIRECTORY,
   SCENE_LEFT_MARGIN,
   SCENE_RIGHT_MARGIN,
   VIDEO_LEFT_MARGIN,
@@ -12,11 +12,12 @@ const {
 } = config;
 const insertScene = require("./../../components/utils/db.insertScene");
 function SceneMaker(id, video_path, subtitle_path, w) {
+  
   var scenes = [];
   const word = w;
   const videoID = id;
-  const videoPath = `${MOVIES_DIRECTORY}/${video_path}`;
-  const subtitlePath = `${MOVIES_DIRECTORY}/${subtitle_path}`;
+  const videoPath = `${VIDEOS_DIRECTORY}/${video_path}`;
+  const subtitlePath = `${VIDEOS_DIRECTORY}/${subtitle_path}`;
   const outScenesPath = makeSceneDirectory(subtitlePath);
   const subtitle = fs.readFileSync(subtitlePath, "utf8");
   const subtitlesMain = [...parse(subtitle)];
@@ -39,7 +40,6 @@ function SceneMaker(id, video_path, subtitle_path, w) {
       let finded = subtitlesMain.findIndex(
         (s) => s.end > startTime && s.start < end && s.end !== end
       );
-
       if (finded !== -1) {
         return getLeftMargin(subtitlesMain[finded], finded);
       }
@@ -83,8 +83,6 @@ function SceneMaker(id, video_path, subtitle_path, w) {
         let left = getLeftMargin(sub, firstIndex),
           right = getRightMargin(sub, firstIndex);
 
-        console.log("left: ", left);
-        console.log("right: ", right);
         scenes.push({
           start: left.time,
           end: right.time,
@@ -149,6 +147,7 @@ function SceneMaker(id, video_path, subtitle_path, w) {
       trim(i + 1);
     } else {
       console.log("Export done");
+      return;
     }
   }
   return { getWord, getSubtitleArray, getScenes, createScenes, render };

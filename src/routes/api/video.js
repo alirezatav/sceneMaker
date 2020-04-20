@@ -1,6 +1,6 @@
 var router = require("express").Router();
 const fs = require("fs");
-const moviesDirectory = require("./../../config").MOVIES_DIRECTORY;
+const moviesDirectory = require("./../../config").VIDEOS_DIRECTORY;
 const insertVideo = require("./../../components/utils/db.insertVideo");
 router.post("/", async (req, res) => {
   try {

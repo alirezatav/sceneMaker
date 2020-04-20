@@ -1,8 +1,7 @@
 const db = require("./../../db/psql");
 function getVideoDetails(id) {
-  var sql =
-    "SELECT *  FROM dictionary_videos WHERE id=($1) ";
-  var values = [id];
+  let sql = "SELECT *  FROM dictionary_videos WHERE id=($1) limit 1 ";
+  let values = [id];
   return db.query(sql, values);
 }
 
