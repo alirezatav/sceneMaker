@@ -1,6 +1,11 @@
 var ffmpeg = require("fluent-ffmpeg");
 
 function trimMedia(input, output, start, duration) {
+
+  console.log('output :',output);
+  console.log('input :',input);
+  console.log('duration :',duration);
+  console.log('start :',start);
   return new Promise((res, rej) => {
     ffmpeg(input)
       .setStartTime(start / 1000)
