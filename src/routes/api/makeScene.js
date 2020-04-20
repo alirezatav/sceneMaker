@@ -1,7 +1,7 @@
 var router = require("express").Router();
 var makeScene = require("./../../components/makeScene/makeScene");
 const getVideoDetails = require("./../../components/utils/db.getVideoDetails");
-const moviesDirectory = require("./../../config").MOVIES_DIRECTORY;
+
 router.post("/", async (req, res, next) => {
   try {
     var response = await getVideoDetails(req.body.video_id);
@@ -19,7 +19,7 @@ router.post("/", async (req, res, next) => {
   } catch (error) {
     res.status(500).json({ status: false, message: "INTERNAL ERROR" });
   }
-  let result = `${moviesDirectory}/${name}/scenes`;
+ 
   res.status(200).json({
     status: "ok",
     message: `Your exprot request for  ${name} is being processed .`,

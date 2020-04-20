@@ -8,6 +8,6 @@ const config = {
   DATABASE_USERNAME: "weblate",
   DATABASE_PASSWORD: "weblate",
   DATABASE_PORT: 5433,
-  MOVIES_DIRECTORY:'./resources/Movies'
+  MOVIES_DIRECTORY:'resources/Movies'
 };
 module.exports = config;

@@ -10,11 +10,11 @@ function trimMedia(input, output, start, duration) {
   console.log("path.join(__d", path.join(__dirname, "XXX"));
 
   return new Promise((res, rej) => {
-    ffmpeg(input)
+    ffmpeg(process.cwd()+'/'+input)
       .addInputOption("-strict experimental")
       .setStartTime(start / 1000)
       .setDuration(duration / 1000)
-      .output(output)
+      .output(process.cwd()+'/'+output)
       .on("end", function (err) {
         if (!err) {
           res(true);
