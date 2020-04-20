@@ -63,7 +63,7 @@ function trimMedia(input, output, start, duration) {
     //     console.log("FFMEPG ERROR: ", +err);
     //   })
     //   .run();
-  });
+  // });
 }
 // let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
 // executeFfmpeg(command)
