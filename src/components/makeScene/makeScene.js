@@ -130,6 +130,7 @@ function SceneMaker(id, video_path, subtitle_path, w) {
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end - scenes[i].start + VIDEO_RIGHT_MARGIN
       );
+      fs.mkdirSync(outScenesPath)
       fs.writeFileSync(`${outScenesPath}/${word}-${time}.srt`, scenes[i].sub);
 
       insertScene(
