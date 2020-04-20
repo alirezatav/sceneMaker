@@ -10,8 +10,8 @@ function trimMedia(input, output, start, duration) {
   console.log("path.join(__d", path.join(__dirname, "XXX"));
 
   return new Promise((res, rej) => {
-    let output='/home/weblate/sceneMaker/resources/Movies/seven-world-one-planet-e1/scenes/hunt/hunt-1587396383112.mp4'
-    let input='/home/weblate/sceneMaker/resources/Movies/seven-world-one-planet-e1/Seven.Worlds.One.Planet.S01E01.mkv'
+    let output='../../../resources/Movies/seven-world-one-planet-e1/scenes/hunt/hunt-1587396383112.mp4'
+    let input='./'
     ffmpeg(input)
       .setStartTime(start / 1000)
       .setDuration(duration / 1000)
