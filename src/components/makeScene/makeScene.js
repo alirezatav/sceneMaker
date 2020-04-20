@@ -108,7 +108,7 @@ function SceneMaker(id, video_path, subtitle_path, w) {
     return [...scenes];
   }
   function makeSceneDirectory(p) {
-    var path = `${p.substr(0, p.lastIndexOf("/"))}/scenes`;
+    var path = `${MOVIES_DIRECTORY}/${p.substr(0, p.lastIndexOf("/"))}/scenes`;
     try {
       fs.mkdirSync(path);
     } catch (error) {}
