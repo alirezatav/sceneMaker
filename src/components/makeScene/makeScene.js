@@ -126,6 +126,13 @@ function SceneMaker(id, video_path, subtitle_path, w) {
     try {
       fs.mkdirSync(outScenesPath);
     } catch (error) {}
+
+
+    console.log('videoPath',videoPath);
+    console.log('   out  :::`${outScenesPath}/${word}-${time}.mp4',`${outScenesPath}/${word}-${time}.mp4`);
+
+
+
     try {
       await trimMedia(
         videoPath,
