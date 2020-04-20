@@ -108,7 +108,7 @@ function SceneMaker(id, video_path, subtitle_path, w) {
     return [...scenes];
   }
   function makeSceneDirectory(p) {
-    var path = `${MOVIES_DIRECTORY}/${p.substr(0, p.lastIndexOf("/"))}/scenes`;
+    var path = `${p.substr(0, p.lastIndexOf("/"))}/scenes`;
     try {
       fs.mkdirSync(path);
     } catch (error) {}
@@ -130,7 +130,10 @@ function SceneMaker(id, video_path, subtitle_path, w) {
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end - scenes[i].start + VIDEO_RIGHT_MARGIN
       );
-      fs.mkdirSync(outScenesPath)
+      try {
+        fs.mkdirSync(outScenesPath);
+      } catch (error) {}
+
       fs.writeFileSync(`${outScenesPath}/${word}-${time}.srt`, scenes[i].sub);
 
       insertScene(
