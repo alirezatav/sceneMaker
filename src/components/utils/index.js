@@ -6,7 +6,7 @@ function trimMedia(input, output, start, duration) {
       .setStartTime(start / 1000)
       .setDuration(duration / 1000)
       .output(output)
-      .inputOptions([ "-strict experimental"],['-vcodec copy' ,' -c:a aac'])
+      .addInputOption("-vcodec copy -strict experimental  -c:a aac")
       .on("end", function (err) {
         if (!err) {
           res(true);
