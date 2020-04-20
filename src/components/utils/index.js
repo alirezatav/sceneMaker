@@ -10,15 +10,11 @@ function trimMedia(input, output, start, duration) {
   console.log(process.cwd());
   console.log("path.join(__d", path.join(__dirname, "XXX"));
 
-  exec(`  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `, (err, stdout, stderr) => {
+  exec(`ffmpeg -ss ${start} -i ${input/1000} -t ${duration/1000} -strict experimental ${output}  `, (err, stdout, stderr) => {
     if (err) {
-      // node couldn't execute the command
+      console.log('error in run ffmpeg cmdd');
       return;
     }
-  
-    // the *entire* stdout and stderr (buffered)
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
   });
 
   // return new Promise((res, rej) => {
