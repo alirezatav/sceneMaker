@@ -23,7 +23,7 @@ function trimMedia(input, output, start, duration) {
       .run();
   });
 }
-let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
+// let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
 // executeFfmpeg(command)
 
 const executeFfmpeg = (args) => {
