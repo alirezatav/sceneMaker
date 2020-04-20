@@ -1,7 +1,7 @@
 const db = require("./../../db/psql");
 function isCreatedBefore(name, word) {
   let sql =
-    "select  video_path from dictionary_videos as v " +
+    "select  v.video_path from dictionary_videos as v " +
     "left join dictionary_scenes as s " +
     "on v.id=s.video_id " +
     "where name=$1 " +

@@ -7,6 +7,7 @@ router.post("/", async (req, res, next) => {
   var response = await getVideoDetails(req.body.video_id);
   if (response.rows.length < 1) {
     res.status(404).json({ status: false, message: "VIDEO NOT FOUND" });
+    return;
   }
   let { id, video_path, subtitle_path, name } = response.rows[0];
   const created = await isCreatedBefore(name, req.body.word);
@@ -26,19 +27,17 @@ router.post("/", async (req, res, next) => {
     } catch (error) {
       res.status(500).json({ status: false, message: "INTERNAL ERROR" });
     }
-  }
-  else{
+  } else {
     res.status(200).json({
       status: "ok",
-      message:'This has been done recently',
-      path: `${created.rows[0].video_path.substr(0, created.rows[0].video_path.lastIndexOf("/"))}`,
+      message: "This has been done recently",
+      path: `${created.rows[0].video_path.substr(
+        0,
+        created.rows[0].video_path.lastIndexOf("/")
+      )}`,
       data: { scenes: data },
     });
   }
-
-
-
-
 });
 
 module.exports = router;
