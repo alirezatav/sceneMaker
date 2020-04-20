@@ -27,7 +27,7 @@ function trimMedia(input, output, start, duration) {
 }
 
 const executeFfmpeg = (args) => {
-  let command = fluent().output(" "); // pass "Invalid output" validation
+  let command = ffmpeg().output(" "); // pass "Invalid output" validation
   command._outputs[0].isFile = false; // disable adding "-y" argument
   command._outputs[0].target = ""; // bypass "Unable to find a suitable output format for ' '"
   command._global.get = () => {
