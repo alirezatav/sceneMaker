@@ -16,7 +16,7 @@ router.post("/", async (req, res, next) => {
   ms.createScenes();
   var data = ms.getScenes();
 
-  if (created.rows.length < 0) {
+  if (created.rows.length < 1) {
     try {
       ms.render();
       res.status(200).json({
