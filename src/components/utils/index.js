@@ -10,7 +10,7 @@ function trimMedia(input, output, start, duration) {
   console.log(process.cwd());
   console.log("path.join(__d", path.join(__dirname, "XXX"));
 
-  exec('pwd', (err, stdout, stderr) => {
+  exec(`  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `, (err, stdout, stderr) => {
     if (err) {
       // node couldn't execute the command
       return;
