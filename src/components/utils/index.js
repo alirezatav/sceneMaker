@@ -6,7 +6,7 @@ function trimMedia(input, output, start, duration) {
   console.log("duration :", duration);
   console.log("start :", start);
   return new Promise((res, rej) => {
-    let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} ${output}  `;
+    let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
     // ffmpeg(input)
     // .addInputOption("-strict experimental")
     // .setStartTime(start / 1000)
