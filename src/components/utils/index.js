@@ -6,13 +6,11 @@ function trimMedia(input, output, start, duration) {
   console.log("duration :", duration);
   console.log("start :", start);
   return new Promise((res, rej) => {
-    let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
-    // ffmpeg(input)
-    // .addInputOption("-strict experimental")
-    // .setStartTime(start / 1000)
-    // .setDuration(duration / 1000)
-    // .output(output)
-    executeFfmpeg(command)
+    ffmpeg("home/weblate/sceneMaker" + input.replace(".", ""))
+      .addInputOption("-strict experimental")
+      .setStartTime(start / 1000)
+      .setDuration(duration / 1000)
+      .output("home/weblate/sceneMaker" + output.replace("."))
       .on("end", function (err) {
         if (!err) {
           res(true);
@@ -25,6 +23,8 @@ function trimMedia(input, output, start, duration) {
       .run();
   });
 }
+let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
+// executeFfmpeg(command)
 
 const executeFfmpeg = (args) => {
   let command = ffmpeg().output(" "); // pass "Invalid output" validation
