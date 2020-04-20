@@ -18,7 +18,13 @@ function trimMedia(input, output, start, duration) {
             .setVideoStartTime(start / 1000)
             .setVideoDuration(duration / 1000)
             .save(output, function (error, file) {
-              if (!error) console.log("Video file: " + file);
+              if (!error) {
+                console.log("DONE");
+                res(true);
+              } else {
+                console.log("Error: " + error);
+                rej(false);
+              }
             });
         } else {
           console.log("Error: " + err);
@@ -28,7 +34,7 @@ function trimMedia(input, output, start, duration) {
       console.log(e.code);
       console.log(e.msg);
     }
-    console.log("DONE");
+
     // let output =
     //   "../../../resources/Movies/seven-world-one-planet-e1/scenes/hunt/hunt-1587396383112.mp4";
     // let input = "./";
