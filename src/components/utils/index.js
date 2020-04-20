@@ -12,7 +12,7 @@ function trimMedia(input, output, start, duration) {
 
   return new Promise((res, rej) => {
     try {
-      new ffmpeg2(input, function (err, video) {
+      new ffmpeg(input, function (err, video) {
         if (!err) {
           console.log("The video is ready to be processed");
         } else {
