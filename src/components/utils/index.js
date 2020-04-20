@@ -10,11 +10,12 @@ function trimMedia(input, output, start, duration) {
   console.log("path.join(__d", path.join(__dirname, "XXX"));
 
   return new Promise((res, rej) => {
-    ffmpeg(process.cwd()+'/'+input)
-      .addInputOption("-strict experimental")
+    let output=' resources/Movies/seven-world-one-planet-e1/scenes/hunt/hunt-1587396383112.mp4'
+    let input='resources/Movies/seven-world-one-planet-e1/Seven.Worlds.One.Planet.S01E01.mkv'
+    ffmpeg(input)
       .setStartTime(start / 1000)
       .setDuration(duration / 1000)
-      .output(process.cwd()+'/'+output)
+      .output(output)
       .on("end", function (err) {
         if (!err) {
           res(true);
@@ -27,17 +28,5 @@ function trimMedia(input, output, start, duration) {
       .run();
   });
 }
-// let command = `  ffmpeg -ss ${start} -i ${input} -c copy -t ${duration} -strict experimental ${output}  `;
-// executeFfmpeg(command)
 
-const executeFfmpeg = (args) => {
-  let command = ffmpeg().output(" "); // pass "Invalid output" validation
-  command._outputs[0].isFile = false; // disable adding "-y" argument
-  command._outputs[0].target = ""; // bypass "Unable to find a suitable output format for ' '"
-  command._global.get = () => {
-    // append custom arguments
-    return typeof args === "string" ? args.split(" ") : args;
-  };
-  return command;
-};
 module.exports = { trimMedia };
