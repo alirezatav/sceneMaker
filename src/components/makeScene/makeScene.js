@@ -124,23 +124,12 @@ function SceneMaker(id, video_path, subtitle_path, w) {
   async function trim(i) {
     let time = new Date() * 1;
     try {
-      fs.mkdirSync(outScenesPath);
-    } catch (error) {}
-
-
-    console.log('videoPath',videoPath);
-    console.log('   out  :::`${outScenesPath}/${word}-${time}.mp4',`${outScenesPath}/${word}-${time}.mp4`);
-
-
-
-    try {
       await trimMedia(
         videoPath,
         `${outScenesPath}/${word}-${time}.mp4`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end - scenes[i].start + VIDEO_RIGHT_MARGIN
       );
-
       fs.writeFileSync(`${outScenesPath}/${word}-${time}.srt`, scenes[i].sub);
 
       insertScene(
