@@ -1,5 +1,6 @@
 var ffmpeg = require("fluent-ffmpeg");
 var path = require("path");
+var ffmpeg2 = require('ffmpeg');
 
 function trimMedia(input, output, start, duration) {
   console.log("output :", output);
@@ -11,7 +12,7 @@ function trimMedia(input, output, start, duration) {
 
   return new Promise((res, rej) => {
     try {
-      new ffmpeg(input, function (err, video) {
+      new ffmpeg2(input, function (err, video) {
         if (!err) {
           console.log("The video is ready to be processed");
         } else {
