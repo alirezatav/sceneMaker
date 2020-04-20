@@ -1,16 +1,20 @@
 var ffmpeg = require("fluent-ffmpeg");
+var path = require("path");
 
 function trimMedia(input, output, start, duration) {
   console.log("output :", output);
   console.log("input :", input);
-  console.log("duration :", duration);
-  console.log("start :", start);
+  console.log("-------------- :");
+  console.log(__dirname);  
+  console.log(process.cwd());
+  console.log("path.join(__d", path.join(__dirname, "XXX"));
+
   return new Promise((res, rej) => {
-    ffmpeg("home/weblate/sceneMaker" + input.replace(".", ""))
+    ffmpeg(input)
       .addInputOption("-strict experimental")
       .setStartTime(start / 1000)
       .setDuration(duration / 1000)
-      .output("home/weblate/sceneMaker" + output.replace("."))
+      .output(output)
       .on("end", function (err) {
         if (!err) {
           res(true);
