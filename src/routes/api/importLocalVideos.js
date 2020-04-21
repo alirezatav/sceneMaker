@@ -38,7 +38,7 @@ router.post("/", async (req, res, next) => {
         
         let vPath = `${video_file}`;
         let sPath = `${subtitle_file}`;
-        let vSize = fs.statSync(`${moviesDirectory}/${vPath}`).size;
+        let vSize = fs.statSync(`${moviesDirectory}/${current}/${vPath}`).size;
         let category = "automatic detect";
         let d = await insertVideo(current, vPath, sPath, vSize, category);
         next_dir(c)
