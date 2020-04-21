@@ -4,7 +4,7 @@ const moviesDirectory = require("./../../config").VIDEOS_DIRECTORY;
 const fs = require("fs");
 const download = require("download");
 router.post("/", async (req, res) => {
-  console.log(44);
+  
   let { video_link, subtitle_link, name } = req.body;
   if (!video_link || !subtitle_link || !name) {
     res.status(404).json({
