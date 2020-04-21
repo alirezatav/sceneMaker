@@ -8,11 +8,8 @@ router.post("/", async (req, res, next) => {
   const videos = await getVideos();
   const videosList = videos.rows.map((a) => a.name);
   importLocalVideos(0);
-  console.log(videosList);
-  res.status(200).json({
-    status: "ok",
-    message: " processing ....",
-  });
+ 
+
   async function importLocalVideos(c) {
     let current = localVideos[c];
     console.log("current is ", current);
@@ -38,9 +35,9 @@ router.post("/", async (req, res, next) => {
     
         return next_dir(c);
       } else {
-        console.log("import new videp", video_file);
-        let vPath = `${current}/${video_file}`;
-        let sPath = `${current}/${subtitle_file}`;
+        
+        let vPath = `${video_file}`;
+        let sPath = `${subtitle_file}`;
         let vSize = fs.statSync(`${moviesDirectory}/${vPath}`).size;
         let category = "automatic detect";
         let d = await insertVideo(current, vPath, sPath, vSize, category);
@@ -51,6 +48,10 @@ router.post("/", async (req, res, next) => {
   function next_dir(c) {
     if (localVideos[c + 1]) {
       return importLocalVideos(c + 1);
+    }else{
+      res.status(200).json({
+        status: true,
+      });
     }
   }
 });

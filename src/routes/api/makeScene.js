@@ -12,7 +12,7 @@ router.post("/", async (req, res, next) => {
   let { id, video_path, subtitle_path, name } = response.rows[0];
   const created = await isCreatedBefore(name, req.body.word);
 
-  var ms = makeScene(id, video_path, subtitle_path, req.body.word);
+  var ms = makeScene(id, video_path, subtitle_path, req.body.word,name);
   ms.createScenes();
   var data = ms.getScenes();
 
@@ -20,7 +20,7 @@ router.post("/", async (req, res, next) => {
     try {
       ms.render();
       res.status(200).json({
-        status: "ok",
+        status: true,
         message: `Exporting scenes is underway.`,
         data: { scenes: data },
       });
@@ -29,7 +29,7 @@ router.post("/", async (req, res, next) => {
     }
   } else {
     res.status(200).json({
-      status: "ok",
+      status: true,
       message: "This has been done recently",
       path: `${created.rows[0].video_path.substr(
         0,

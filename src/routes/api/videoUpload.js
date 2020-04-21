@@ -32,8 +32,8 @@ router.post("/", async (req, res) => {
         return;
       }
 
-      let vPath = `${req.body.name}/${video.name}`;
-      let sPath = `${req.body.name}/${subtitle.name}`;
+      let vPath = `${video.name}`;
+      let sPath = `${subtitle.name}`;
       let category = req.body.category || "movie";
       video.mv(`${moviesDirectory}/${vPath}`);
       subtitle.mv(`${moviesDirectory}/${sPath}`);

@@ -11,13 +11,13 @@ const {
   VIDEO_RIGHT_MARGIN,
 } = config;
 const insertScene = require("./../../components/utils/db.insertScene");
-function SceneMaker(id, video_path, subtitle_path, w) {
-  
+function SceneMaker(id, video_path, subtitle_path, w,name) {
+  const video_name=name;
   var scenes = [];
   const word = w;
   const videoID = id;
-  const videoPath = `${VIDEOS_DIRECTORY}/${video_path}`;
-  const subtitlePath = `${VIDEOS_DIRECTORY}/${subtitle_path}`;
+  const videoPath = `${VIDEOS_DIRECTORY}/${video_name}/${video_path}`;
+  const subtitlePath = `${VIDEOS_DIRECTORY}/${video_name}/${subtitle_path}`;
   const outScenesPath = makeSceneDirectory(subtitlePath);
   const subtitle = fs.readFileSync(subtitlePath, "utf8");
   const subtitlesMain = [...parse(subtitle)];
