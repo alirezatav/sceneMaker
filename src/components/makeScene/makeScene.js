@@ -153,6 +153,6 @@ function SceneMaker(id, video_path, subtitle_path, w,name) {
   return { getWord, getSubtitleArray, getScenes, createScenes, render };
 }
 
-module.exports = function (id, video_path, subtitle_path, word) {
-  return new SceneMaker(id, video_path, subtitle_path, word);
+module.exports = function (id, video_path, subtitle_path, word,name) {
+  return new SceneMaker(id, video_path, subtitle_path, word,name);
 };
