@@ -10,7 +10,7 @@ const config = {
 //postgres database
 const postgres = {
   DATABASE_NAME: "weblatedb",
-  DATABASE_HOST: "185.120.221.230",
+  DATABASE_HOST: '127.0.0.1:5432',
   DATABASE_USERNAME: "weblate",
   DATABASE_PASSWORD: "weblate",
   DATABASE_PORT: 5433,
