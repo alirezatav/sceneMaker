@@ -1,5 +1,4 @@
 var router = require("express").Router();
-const fs = require("fs");
 const moviesDirectory = require("./../../config").VIDEOS_DIRECTORY;
 const insertVideo = require("./../../components/utils/db.insertVideo");
 router.post("/", async (req, res) => {
@@ -28,6 +27,7 @@ router.post("/", async (req, res) => {
         res.status(404).send({
           status: false,
           message: "Need send one (.srt) file and one video file",
+          supported_formats: "mkv mov avi wmv flv 3gp mp4 mpg",
         });
         return;
       }
