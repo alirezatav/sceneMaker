@@ -16,7 +16,7 @@ const postgres = {
   DATABASE_PORT: 5432,
 };
 const api = {
-  BASE_URL: "http://185.120.221.230:3000/api/",
-  STATIC: "http://185.120.221.230:3000/static/",
+  BASE_URL: "http://185.120.221.230:4000/api/",
+  STATIC: "http://185.120.221.230:4000/static/",
 };
 module.exports = { ...config, ...postgres, ...api };
