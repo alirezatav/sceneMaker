@@ -124,17 +124,17 @@ function SceneMaker(id, video_path, subtitle_path, w,name) {
     try {
       await trimMedia(
         videoPath,
-        `${outScenesPath}/${word}-${time}.mp4`,
+        `${outScenesPath}/${word}-${i+1}.mp4`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end - scenes[i].start + VIDEO_RIGHT_MARGIN
       );
-      fs.writeFileSync(`${outScenesPath}/${word}-${time}.srt`, scenes[i].sub);
+      fs.writeFileSync(`${outScenesPath}/${word}-${i+1}.srt`, scenes[i].sub);
 
       insertScene(
         word,
         videoID,
-        `${outScenesPath}/${word}-${time}.mp4`,
-        `${outScenesPath}/${word}-${time}.srt`,
+        `${outScenesPath}/${word}-${i+1}.mp4`,
+        `${outScenesPath}/${word}-${i+1}.srt`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end + VIDEO_RIGHT_MARGIN
       );
