@@ -133,8 +133,8 @@ function SceneMaker(id, video_path, subtitle_path, w,name) {
       insertScene(
         word,
         videoID,
-        `${outScenesPath}/${word}-${i+1}.mp4`,
-        `${outScenesPath}/${word}-${i+1}.srt`,
+        `${word}-${i+1}.mp4`,
+        `${word}-${i+1}.srt`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end + VIDEO_RIGHT_MARGIN
       );
