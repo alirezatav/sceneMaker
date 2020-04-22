@@ -37,13 +37,20 @@ router.post("/", async (req, res) => {
       req.files.video.mv(`${moviesDirectory}/${vPath}`);
       req.files.subtitle.mv(`${moviesDirectory}/${sPath}`);
 
-      let d = await insertVideo(
-        req.body.name,
-        vPath,
-        sPath,
-        video.size,
-        category
-      );
+      try {
+        let d = await insertVideo(
+          req.body.name,
+          vPath,
+          sPath,
+          video.size,
+          category
+        );
+      } catch (error) {
+        res.status(400).send({
+          status: false,
+          message: `Name is Duplicate`,
+        });
+      }
 
       res.send({
         status: true,
