@@ -1,5 +1,6 @@
 var router = require("express").Router();
 const moviesDirectory = require("./../../config").VIDEOS_DIRECTORY;
+const fs = require('fs')
 const insertVideo = require("./../../components/utils/db.insertVideo");
 router.post("/", async (req, res) => {
   try {
@@ -31,11 +32,17 @@ router.post("/", async (req, res) => {
         return;
       }
 
+      try {
+        fs.mkdir(`${moviesDirectory}/${req.body.name}`)
+      } catch (error) {
+        
+      }
+
       let vPath = `${req.files.video.name}`;
       let sPath = `${req.files.subtitle.name}`;
       let category = req.body.category || "movie";
-      req.files.video.mv(`${moviesDirectory}/${vPath}`);
-      req.files.subtitle.mv(`${moviesDirectory}/${sPath}`);
+      req.files.video.mv(`${moviesDirectory}/${req.body.name}/${vPath}`);
+      req.files.subtitle.mv(`${moviesDirectory}/${req.body.name}/${sPath}`);
 
       try {
         let d = await insertVideo(
