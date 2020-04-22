@@ -9,6 +9,8 @@ router.get("/", async (req, res, next) => {
       ...a,
       link:
         static_url + a.video_name + "/scenes/" + a.word + "/" + a.video_path,
+      subtitle_link:
+        static_url + a.video_name + "/scenes/" + a.word + "/" + a.subtitle_path,
     })),
   });
 });
