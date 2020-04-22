@@ -10,19 +10,18 @@ router.post("/", async (req, res) => {
       });
       return;
     }
-    if (!req.files) {
+    if (!req.files.video||!req.files.subtitle) {
       res.status(404).send({
         status: false,
         message: "No file uploaded",
       });
       return;
     } else {
-      let video = req.files.files.find(
-        ({ name }) => !!name.match(/^.*\.(mkv|mov|avi|wmv|flv|3gp|mp4|mpg)$/gi)
+      let video = req.files.video.match(
+        /^.*\.(mkv|mov|avi|wmv|flv|3gp|mp4|mpg)$/gi
       );
-      let subtitle = req.files.files.find(
-        ({ name }) => !!name.match(/^.*\.(srt)$/gi)
-      );
+      let subtitle = !!req.files.subtitle.match(/^.*\.(srt)$/gi)
+      
       if (!subtitle || !video) {
         res.status(404).send({
           status: false,

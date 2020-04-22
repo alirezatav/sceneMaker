@@ -11,8 +11,8 @@ const {
   VIDEO_RIGHT_MARGIN,
 } = config;
 const insertScene = require("./../../components/utils/db.insertScene");
-function SceneMaker(id, video_path, subtitle_path, w,name) {
-  const video_name=name;
+function SceneMaker(id, video_path, subtitle_path, w, name) {
+  const video_name = name;
   var scenes = [];
   const word = w;
   const videoID = id;
@@ -124,17 +124,17 @@ function SceneMaker(id, video_path, subtitle_path, w,name) {
     try {
       await trimMedia(
         videoPath,
-        `${outScenesPath}/${word}-${i+1}.mp4`,
+        `${outScenesPath}/${word}-${i + 1}.mp4`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end - scenes[i].start + VIDEO_RIGHT_MARGIN
       );
-      fs.writeFileSync(`${outScenesPath}/${word}-${i+1}.srt`, scenes[i].sub);
+      fs.writeFileSync(`${outScenesPath}/${word}-${i + 1}.srt`, scenes[i].sub);
 
       insertScene(
         word,
         videoID,
-        `${word}-${i+1}.mp4`,
-        `${word}-${i+1}.srt`,
+        `${word}-${i + 1}.mp4`,
+        `${word}-${i + 1}.srt`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end + VIDEO_RIGHT_MARGIN
       );
@@ -153,6 +153,6 @@ function SceneMaker(id, video_path, subtitle_path, w,name) {
   return { getWord, getSubtitleArray, getScenes, createScenes, render };
 }
 
-module.exports = function (id, video_path, subtitle_path, word,name) {
-  return new SceneMaker(id, video_path, subtitle_path, word,name);
+module.exports = function (id, video_path, subtitle_path, word, name) {
+  return new SceneMaker(id, video_path, subtitle_path, word, name);
 };
