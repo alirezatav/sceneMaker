@@ -7,7 +7,8 @@ router.get("/", async (req, res, next) => {
     status: true,
     data: data.rows.map((a) => ({
       ...a,
-      link: static_url + "/"+a.video_name+"scenes/" + a.word + "/" + a.video_path,
+      link:
+        static_url + a.video_name + "/scenes/" + a.word + "/" + a.video_path,
     })),
   });
 });
