@@ -41,8 +41,13 @@ router.post("/", async (req, res) => {
       let vPath = `${req.files.video.name}`;
       let sPath = `${req.files.subtitle.name}`;
       let category = req.body.category || "movie";
-      req.files.video.mv(`${moviesDirectory}/${req.body.name}/${vPath}`);
+      try {
+              req.files.video.mv(`${moviesDirectory}/${req.body.name}/${vPath}`);
       req.files.subtitle.mv(`${moviesDirectory}/${req.body.name}/${sPath}`);
+      } catch (error) {
+        console.log('ridi...');
+      }
+
 
       try {
         let d = await insertVideo(
