@@ -22,8 +22,8 @@ router.post("/", async (req, res, next) => {
       ms.render();
       res.status(200).json({
         status: true,
-        message: `Exporting scenes is underway.`
-          ? !isEmpty
+        message: !isEmpty
+          ? `Exporting scenes is underway.`
           : "Not Found any match",
         data: { scenes: data },
       });
