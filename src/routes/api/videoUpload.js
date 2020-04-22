@@ -1,6 +1,6 @@
 var router = require("express").Router();
 const moviesDirectory = require("./../../config").VIDEOS_DIRECTORY;
-const fs = require('fs')
+const fs = require("fs");
 const insertVideo = require("./../../components/utils/db.insertVideo");
 router.post("/", async (req, res) => {
   try {
@@ -23,11 +23,10 @@ router.post("/", async (req, res) => {
           /^.*\.(mkv|mov|avi|wmv|flv|3gp|mp4|mpg)$/gi
         );
         let subtitle = req.files.subtitle.name.match(/^.*\.(srt)$/gi);
-  
       } catch (error) {
-        console.log('ridi...');
+        console.log("ridi...");
       }
-  
+
       if (!subtitle || !video) {
         res.status(404).send({
           status: false,
@@ -38,24 +37,21 @@ router.post("/", async (req, res) => {
       }
 
       try {
-        fs.mkdir(`${moviesDirectory}/${req.body.name}`)
-      } catch (error) {
-        
-      }
+        fs.mkdir(`${moviesDirectory}/${req.body.name}`);
+      } catch (error) {}
 
       let vPath = `${req.files.video.name}`;
       let sPath = `${req.files.subtitle.name}`;
       let category = req.body.category || "movie";
       try {
-              req.files.video.mv(`${moviesDirectory}/${req.body.name}/${vPath}`);
-      req.files.subtitle.mv(`${moviesDirectory}/${req.body.name}/${sPath}`);
+        req.files.video.mv(`${moviesDirectory}/${req.body.name}/${vPath}`);
+        req.files.subtitle.mv(`${moviesDirectory}/${req.body.name}/${sPath}`);
       } catch (error) {
-        console.log('ridi...');
+        console.log("ridi...");
       }
 
-
       try {
-        let d = await insertVideo(
+        var d = await insertVideo(
           req.body.name,
           vPath,
           sPath,
