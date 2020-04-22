@@ -120,7 +120,7 @@ function SceneMaker(id, video_path, subtitle_path, w,name) {
     if (scenes.length > 0) trim(0);
   }
   async function trim(i) {
-    let time = new Date() * 1;
+    console.log("Export Started");
     try {
       await trimMedia(
         videoPath,
