@@ -111,7 +111,7 @@ function SceneMaker(id, video_path, subtitle_path, w, name) {
       fs.mkdirSync(path);
     } catch (error) {}
     try {
-      path = `${path}/${word}`;
+      path = `${path}/${word.replace(/\s/g, ".")}`;
       fs.mkdirSync(path);
     } catch (error) {}
     return path;
@@ -122,19 +122,23 @@ function SceneMaker(id, video_path, subtitle_path, w, name) {
   async function trim(i) {
     console.log("Export Started");
     try {
+      var correctWord = word.replace(/\s/g, ".");
       await trimMedia(
         videoPath,
-        `${outScenesPath}/${word}-${i + 1}.mp4`,
+        `${outScenesPath}/${correctWord}-${i + 1}.mp4`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end - scenes[i].start + VIDEO_RIGHT_MARGIN
       );
-      fs.writeFileSync(`${outScenesPath}/${word}-${i + 1}.srt`, scenes[i].sub);
+      fs.writeFileSync(
+        `${outScenesPath}/${correctWord}-${i + 1}.srt`,
+        scenes[i].sub
+      );
 
       insertScene(
         word,
         videoID,
-        `${word}-${i + 1}.mp4`,
-        `${word}-${i + 1}.srt`,
+        `${correctWord}-${i + 1}.mp4`,
+        `${correctWord}-${i + 1}.srt`,
         scenes[i].start - VIDEO_LEFT_MARGIN,
         scenes[i].end + VIDEO_RIGHT_MARGIN
       );
