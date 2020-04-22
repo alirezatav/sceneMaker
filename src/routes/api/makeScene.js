@@ -12,7 +12,8 @@ router.post("/", async (req, res, next) => {
   let { id, video_path, subtitle_path, name } = response.rows[0];
   const created = await isCreatedBefore(name, req.body.word);
 
-  var ms = makeScene(id, video_path, subtitle_path, req.body.word,name);
+  var ms = makeScene(id, video_path, subtitle_path, req.body.word, name);
+  let isEmpty = ms.length < 1;
   ms.createScenes();
   var data = ms.getScenes();
 
@@ -21,7 +22,9 @@ router.post("/", async (req, res, next) => {
       ms.render();
       res.status(200).json({
         status: true,
-        message: `Exporting scenes is underway.`,
+        message: `Exporting scenes is underway.`
+          ? !isEmpty
+          : "Not Found any match",
         data: { scenes: data },
       });
     } catch (error) {
