@@ -13,10 +13,10 @@ router.post("/", async (req, res, next) => {
   const created = await isCreatedBefore(name, req.body.word);
 
   var ms = makeScene(id, video_path, subtitle_path, req.body.word, name);
-  let isEmpty = ms.length < 1;
+  
   ms.createScenes();
   var data = ms.getScenes();
-
+  let isEmpty = data.length < 1;
   if (created.rows.length < 1) {
     try {
       ms.render();
