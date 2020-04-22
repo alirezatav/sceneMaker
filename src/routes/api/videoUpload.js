@@ -19,10 +19,10 @@ router.post("/", async (req, res) => {
       return;
     } else {
       try {
-        let video = req.files.video.name.match(
+        var video = req.files.video.name.match(
           /^.*\.(mkv|mov|avi|wmv|flv|3gp|mp4|mpg)$/gi
         );
-        let subtitle = req.files.subtitle.name.match(/^.*\.(srt)$/gi);
+        var subtitle = req.files.subtitle.name.match(/^.*\.(srt)$/gi);
       } catch (error) {
         console.log("ridi...");
       }
