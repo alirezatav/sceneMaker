@@ -1,10 +1,14 @@
 const router = require("express").Router();
 let getVideoWordScenes = require("../../components/utils/db.getVideoWordScenes");
+let static_url = require("./../../config").STATIC;
 router.get("/", async (req, res, next) => {
-  let data = await getVideoWordScenes(req.query.id,req.query.word);
+  let data = await getVideoWordScenes(req.query.id, req.query.word);
   res.status(200).json({
     status: true,
-    data:data.rows,
+    data: data.rows.map((a) => ({
+      ...a,
+      link: config.static_url + a.video_path,
+    })),
   });
 });
 

@@ -10,10 +10,13 @@ const config = {
 //postgres database
 const postgres = {
   DATABASE_NAME: "weblatedb",
-  DATABASE_HOST: '127.0.0.1',
+  DATABASE_HOST: "127.0.0.1",
   DATABASE_USERNAME: "weblate",
   DATABASE_PASSWORD: "weblate",
   DATABASE_PORT: 5432,
 };
-
-module.exports = { ...config, ...postgres };
+const api = {
+  BASE_URL: "http://185.120.221.230:3000/api/",
+  STATIC: "http://185.120.221.230:3000/static/",
+};
+module.exports = { ...config, ...postgres, ...api };
