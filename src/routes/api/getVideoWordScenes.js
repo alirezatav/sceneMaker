@@ -8,9 +8,19 @@ router.get("/", async (req, res, next) => {
     data: data.rows.map((a) => ({
       ...a,
       link:
-        static_url + a.video_name + "/scenes/" + a.word + "/" + a.video_path,
+        static_url +
+        a.video_name +
+        "/scenes/" +
+        a.word.replace(/\s/g, ".") +
+        "/" +
+        a.video_path,
       subtitle_link:
-        static_url + a.video_name + "/scenes/" + a.word + "/" + a.subtitle_path,
+        static_url +
+        a.video_name +
+        "/scenes/" +
+        a.word.replace(/\s/g, ".") +
+        "/" +
+        a.subtitle_path,
     })),
   });
 });
