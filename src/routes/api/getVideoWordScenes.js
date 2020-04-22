@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
     status: true,
     data: data.rows.map((a) => ({
       ...a,
-      link:   a.video_path,
+      link:   "/"+a.video_path,
     })),
   });
 });
