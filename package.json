@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "download": "^8.0.0",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-fileupload": "^1.1.7-alpha.3",
     "express-jwt": "^5.3.3",
     "lodash": "^4.17.15",
